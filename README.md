@@ -7,6 +7,14 @@ Uses icon fonts [Meteocons], [IcoMoon], and [Iconic] via [icomoon.io]
 
 Requires [Lockscreen Clock Hide] or something similar
 
+Currently
+===========
+
+Lockscreen only (with a few minor things)
+
+![minimal.iOS Lockscreen](http://colbyfayock.com/minimal.ios/minimal.ios-lockscreen.png)
+
+
 [meteocons]: http://www.alessioatzeni.com/meteocons/
 [IcoMoon]: http://www.alessioatzeni.com/meteocons/
 [Iconic]: http://www.alessioatzeni.com/meteocons/
