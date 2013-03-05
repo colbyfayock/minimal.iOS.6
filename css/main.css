@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon/icomoon.eot');
+    src: url('../fonts/icomoon/icomoon.woff') format('woff'),
+         url('../fonts/icomoon/icomoon.ttf') format('truetype'),
+         url('../fonts/icomoon/icomoon.svg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	box-sizing: border-box;
+	text-align: left;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	color: #999;
+	font-size: 16px;
+	font-family: Helvetica;
+	font-weight: 100;
+}
+
+img {
+	border: none;
+}
+
+.clear:before, .clear:after {
+	content: " ";
+	display: table;
+}
+.clear:after {
+	clear: both;
+}
+
+.layer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 320px;
+	height: 568px;
+	font-size: 1em;
+	background-color: #222222;
+	background-size: 320px auto;
+}
+.container {
+	width: 100%;
+	padding-top: 220px;
+}
+
+.clock, .date, .weather {
+	display: table;
+	margin: 0 auto;
+}
+
+
+/* Clock */
+.clock span {
+	display: block;
+	height: 50px;
+	font-size: 50px;
+	font-weight: bold;
+	line-height: 50px;
+	float: left;
+}
+.clock .sep {
+	line-height: 40px;
+}
+
+
+/* Date */
+.date {
+	height: 15px;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 10px;
+}
+
+
+/* Weather icon and temp */
+.weather span {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	float: left;
+}
+.icon {
+	font-size: 26px;
+	padding-right: 4px;
+}
+.icon:before {
+	position: relative;
+	font-family: 'icomoon';
+	content: attr(data-icon);
+}
+.temp {
+	font-size: 30px;
+	font-weight: bold;
+}
+.icon.loading {
+	height: 30px;
+	line-height: 26px;
+	-webkit-animation:spin .4s infinite linear;
+	padding-right: 0;
+}
+.icon.loading:before {
+	font-size: 16px;
+}
+@-webkit-keyframes spin {
+	0% { -webkit-transform:rotate(0deg); }
+	100% { -webkit-transform:rotate(360deg); }
+}
