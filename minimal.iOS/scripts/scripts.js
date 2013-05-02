@@ -50,7 +50,8 @@ time = {
 	}
 },
 yqlWeather = function(data, callback) {
-	var url = 'http://query.yahooapis.com/v1/public/yql?format=json&diagnostics=true&callback=?&q=';
+	var fetch,
+		url = 'http://query.yahooapis.com/v1/public/yql?format=json&diagnostics=true&callback=?&q=';
 
 	if (data.zip !== '') {
 		url += 'select * from weather.forecast where location in ("' + data.zip + '") and u="' + data.unit + '"';
@@ -58,7 +59,15 @@ yqlWeather = function(data, callback) {
 		console.log('Invalid location');
 	}
 
-	return $.getJSON(url, callback);
+	fetch = $.ajax({
+	    url: url,
+	    dataType: 'jsonp',
+	    jsonp: 'callback',
+	    jsonpCallback: 'cbfunc',
+	    success: callback
+	});
+
+	return fetch;
 },
 weather = function(userSettings) {
 	var defaults = {
@@ -119,25 +128,19 @@ weather = function(userSettings) {
 	},
 	process = function(settings, data) {
 
-		var weatherData = [];
+		var weather = data.query.results.channel.item.condition,
+			weatherData = [];
 
-		if(data.query.results !== null) {
-
-			$.each(data.query.results, function(i, result) {
-				if (result.constructor.toString().indexOf("Array") !== -1) {
-					result = result[0];
-				}
-
-				weatherData.tempF = result.item.condition.temp;
-				weatherData.tempC = Math.round(((weatherData.tempF - 32)*5)/9);
-				weatherData.code = result.item.condition.code;
-			});
-
-			return weatherData;
-
-		} else {
+		if(weather == null) {
 			console.log('Error retrieving data');
+			return;
 		}
+		
+		weatherData.tempC = weather['temp'];
+		weatherData.tempF = weatherData.tempC; // why?
+		weatherData.code = weather['code'];
+
+		return weatherData;
 		
 	};
 	yqlWeather(settings, function(data) {
