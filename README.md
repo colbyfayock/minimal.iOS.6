@@ -1,7 +1,7 @@
 minimal.iOS
 ===========
 
-Minimal Winterboard theme for iOS
+Minimal iPhone Winterboard theme
 
 Uses icon fonts [Meteocons], [IcoMoon], and [Iconic] via [icomoon.io]
 
