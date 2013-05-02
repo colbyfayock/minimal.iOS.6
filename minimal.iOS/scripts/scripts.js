@@ -1,15 +1,14 @@
 var demo = false,
-	zip = '15224',
-	unit = 'f';
+	isDemo, date, time, yqlWeather, weather, mios;
 
-var isDemo = {
-	init : function() {
-		$('.weather .icon').removeClass('loading').attr('data-icon', 'd');
-		$('.weather .temp').text('98°');
-	}
-},
-date = {
-	str  : function() {
+isDemo = function() {
+	$('.weather .icon').removeClass('loading').attr('data-icon', 'd');
+	$('.weather .temp').text('98°');
+};
+
+date = function(e) {
+
+	var str = function() {
 		var curr = new Date(),
 			day = curr.getDate(),
 		    wday = curr.getDay(),
@@ -18,13 +17,14 @@ date = {
 			monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 			date = [wdayArr[wday], monthArr[month], day];
 		return date;
-	},
-	init : function(e) {
-		$(e).find('span').text(date.str()[0] + ', ' + date.str()[1] + ' ' + date.str()[2]);
-	}
-},
-time = {
-	str : function() {
+	};
+
+	$(e).find('span').text(str()[0] + ', ' + str()[1] + ' ' + str()[2]);
+};
+
+time = function(e) {
+
+	var str = function() {
 		var now = new Date (),
 			hour = now.getHours(),
 			min = now.getMinutes(),
@@ -41,14 +41,14 @@ time = {
 
 		time = [hour, min];
 		// Compose the string for display
-		return time; 
-	},
-	init : function(e) {
-		// var time = time.str();
-		$(e).find('.hour').text(time.str()[0]);
-		$(e).find('.min').text(time.str()[1]);
-	}
-},
+		return time;
+	};
+
+	$(e).find('.hour').text(str()[0]);
+	$(e).find('.min').text(str()[1]);
+
+};
+
 yqlWeather = function(data, callback) {
 	var fetch,
 		url = 'http://query.yahooapis.com/v1/public/yql?format=json&diagnostics=true&callback=?&q=';
@@ -68,10 +68,11 @@ yqlWeather = function(data, callback) {
 	});
 
 	return fetch;
-},
+};
+
 weather = function(userSettings) {
 	var defaults = {
-		zip     : '17815',
+		zip     : '15224',
 	    unit    : 'f'
 	},
 	settings = $.extend(defaults, userSettings),
@@ -135,13 +136,13 @@ weather = function(userSettings) {
 			console.log('Error retrieving data');
 			return;
 		}
-		
+
 		weatherData.tempC = weather['temp'];
 		weatherData.tempF = weatherData.tempC; // why?
 		weatherData.code = weather['code'];
 
 		return weatherData;
-		
+
 	};
 	yqlWeather(settings, function(data) {
 		var weather = process(settings, data);
@@ -154,23 +155,22 @@ weather = function(userSettings) {
 			}
 		});
 	});
-}
+};
 
-
-$(function(){
-	date.init('.date');
-	time.init('.clock');
+mios = function(settings) {
+	date('.date');
+	time('.clock');
 	setInterval(function(){
-		date.init('.date');
-		time.init('.clock');
+		date('.date');
+		time('.clock');
 	}, 1000);
-	
+
 	if(demo == true) {
-		isDemo.init();
+		isDemo();
 	} else {
 		weather({
-			zip: zip,
-			unit: unit
+			zip: settings['zip'],
+			unit: settings['unit']
 		});
 	}
-});
+};
