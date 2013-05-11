@@ -3,16 +3,24 @@ minimal.iOS
 
 Minimal iPhone Winterboard theme
 
-Uses icon fonts [Meteocons], [IcoMoon], and [Iconic] via [icomoon.io]
-
-Requires [Lockscreen Clock Hide] or something similar
-
 Currently
 ===========
 
 Lockscreen only (with a few minor things)
 
 ![minimal.iOS Lockscreen](http://colbyfayock.com/minimal.ios/minimal.ios-lockscreen.png)
+
+Requires
+===========
+[Lockscreen Clock Hide] or something similar
+
+Tweaks
+===========
+Hate those icon labels? Try Springtomize 2
+
+Uses
+===========
+Icon fonts [Meteocons], [IcoMoon], and [Iconic] via [icomoon.io]
 
 
 [meteocons]: http://www.alessioatzeni.com/meteocons/
