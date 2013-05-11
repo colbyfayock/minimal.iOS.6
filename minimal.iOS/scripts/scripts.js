@@ -75,8 +75,7 @@ yqlWeather = function(data, callback, failed) {
 weather = function(userSettings) {
 	var defaults = {
 		zip     : '15224',
-	    unit    : 'f',
-	    realFeel: false
+	    unit    : 'f'
 	},
 	settings = $.extend(defaults, userSettings),
 	icons = {
@@ -134,30 +133,7 @@ weather = function(userSettings) {
 
 		var weather = data.query.results.channel;
 			condition = weather.item.condition,
-			atmosphere = weather.atmosphere,
-			wind = weather.wind,
-			weatherData = [],
-			getReal = function(condition, wind, atmosphere) {
-				var temp = condition['temp'],
-					humidity = atmosphere['humidity'],
-					heatIndex = -42.379 +
-						(2.04901523 * temp) +
-						(10.14333127 * humidity) +
-						(-.22475541 * temp * humidity) +
-						((-6.83783*.001)*(temp*temp)) +
-						((-5.481717*.01)*(humidity*humidity)) +
-						((1.22874*.001)*(temp*temp)*humidity) +
-						((8.5282*.0001)*temp*(humidity*humidity)) +
-						((-1.99*.000001)*(temp*temp)*(humidity*humidity));
-				if(temp >= 80 && humidity >= 40) {
-					return Math.round(heatIndex);
-				} else if (temp <= 50 && wind['speed'] > 3) {
-					return wind['chill'];
-				}
-				return temp;
-			};
-
-			boobs = weather;
+			weatherData = [];
 
 		if(weather == null) {
 			console.log('Error retrieving data');
@@ -166,8 +142,6 @@ weather = function(userSettings) {
 
 		weatherData.tempC = condition['temp'];
 		weatherData.tempF = weatherData.tempC; // why?
-		weatherData.realC = getReal(condition, wind, atmosphere);
-		weatherData.realF = weatherData.realC;
 		weatherData.code = condition['code'];
 
 		return weatherData;
@@ -177,19 +151,10 @@ weather = function(userSettings) {
 		var weather = process(settings, data);
 		$('.weather .icon').removeClass('loading').attr('data-icon', icons[weather.code]);
 		$('.weather .temp').text(function(){
-			if(settings.realFeel === true) {
-				console.log('boobs');
-				if(settings.unit == 'c') {
-					return weather.realC + '°';
-				} else {
-					return weather.realF + '°';
-				}
+			if(settings.unit == 'c') {
+				return weather.tempC + '°';
 			} else {
-				if(settings.unit == 'c') {
-					return weather.tempC + '°';
-				} else {
-					return weather.tempF + '°';
-				}
+				return weather.tempF + '°';
 			}
 		});
 	}, function() {
@@ -210,8 +175,7 @@ mios = function(settings) {
 	} else {
 		weather({
 			zip: settings['zip'],
-			unit: settings['unit'],
-			realFeel: settings['realFeel']
+			unit: settings['unit']
 		});
 	}
 };
