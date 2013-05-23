@@ -8,7 +8,7 @@ Currently
 
 Lockscreen only (with a few minor things)
 
-![minimal.iOS Lockscreen](http://colbyfayock.com/minimal.ios/minimal.ios-lockscreen.png)
+![minimal.iOS Lockscreen](http://colbyfayock.com/minimal.ios/minimal.ios-winterboard-theme.png)
 
 Requires
 ===========
