@@ -6,7 +6,7 @@ Minimal iPhone Winterboard theme
 How
 ===========
 To use a background image (background.png):
-- Open index.html in a text editor
+- Open LockBackground.html in a text editor
 - Uncomment css at top by changing
 
 ```html
