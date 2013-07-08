@@ -41,6 +41,7 @@ img {
 	width: 320px;
 	height: 568px;
 	font-size: 1em;
+	background-position: center top;
 	background-color: #222222;
 	background-size: 320px auto;
 }
