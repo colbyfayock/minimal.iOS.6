@@ -3,6 +3,8 @@ minimal.iOS
 
 Minimal iPhone Winterboard theme
 
+Somewhat updated for 7.x
+
 How
 ===========
 To use a background image (background.png):
