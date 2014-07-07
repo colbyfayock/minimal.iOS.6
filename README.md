@@ -1,4 +1,4 @@
-minimal.iOS
+minimal.iOS.6
 ===========
 
 Minimal iPhone Winterboard theme
