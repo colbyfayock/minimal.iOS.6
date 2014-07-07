@@ -3,7 +3,7 @@ minimal.iOS
 
 Minimal iPhone Winterboard theme
 
-Somewhat updated for 7.x
+Somewhat updated for 7.x at [minimal.iOS.7]
 
 How
 ===========
@@ -44,3 +44,4 @@ Icon fonts [Meteocons], [IcoMoon], and [Iconic] via [icomoon.io]
 [Iconic]: http://www.alessioatzeni.com/meteocons/
 [icomoon.io]: http://www.icomoon.io
 [Lockscreen Clock Hide]: http://modmyi.com/cydia/package.php?id=7808
+[minimal.ios.7]: https://github.com/colbyfayock/minimal.iOS.7
